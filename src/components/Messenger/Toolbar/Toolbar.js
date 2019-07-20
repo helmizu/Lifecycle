@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Platform, Image, StatusBar } from 'react-native';
-import { Appbar, withTheme } from 'react-native-paper';
+import { Appbar, withTheme, Menu } from 'react-native-paper';
 import PropTypes from 'prop-types';
-import { colors } from "@config/styles";
+import AppStyles from '@config/styles';
+import metrics from '@config/metrics';
 import styles from './styles';
 
 const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 32 : StatusBar.currentHeight;
 
 class Toolbar extends Component {
+    state = {
+        visible: false,
+    };
+
     componentDidMount() {
         if (Platform.OS === 'android') {
             StatusBar.setBarStyle('light-content');
@@ -15,13 +20,17 @@ class Toolbar extends Component {
             StatusBar.setBackgroundColor('rgba(0,0,0,0.26)');
         }
     }
+
+    _openMenu = () => this.setState({ visible: true });
+
+    _closeMenu = () => this.setState({ visible: false });
     render() {
         const { onBackPress, theme } = this.props;
         const { fonts } = theme;
 
         return (
-            <Appbar.Header statusBarHeight={STATUS_BAR_HEIGHT}>
-                <Appbar.BackAction color={colors.lightGrey} onPress={onBackPress} />
+            <Appbar.Header style={styles.toolbar} statusBarHeight={STATUS_BAR_HEIGHT}>
+                <Appbar.BackAction color={AppStyles.colors.lightGrey} onPress={onBackPress} />
                 <Image
                     source={{
                         uri:
@@ -43,10 +52,20 @@ class Toolbar extends Component {
                             fontFamily: fonts.light
                         }
                     ]}
-                    subtitle={'Active 32 minutes ago'}
+                    subtitle={'Online'}
                 />
-
-                <Appbar.Action icon="more_vert" color={colors.lightGrey} onPress={() => {}} />
+                <Menu
+                    visible={this.state.visible}
+                    onDismiss={this._closeMenu}
+                    anchor={
+                        <Appbar.Action icon="more-vert" color={AppStyles.colors.lightGrey} onPress={this._openMenu} />
+                    }
+                    statusBarHeight={metrics.navBarHeight}
+                >
+                    <Menu.Item onPress={() => { }} title="Item 1" />
+                    <Menu.Item onPress={() => { }} title="Item 2" />
+                    <Menu.Item onPress={() => { }} title="Item 3" />
+                </Menu>
             </Appbar.Header>
         );
     }

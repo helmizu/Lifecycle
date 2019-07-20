@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: AppStyles.colors.black
+        backgroundColor: AppStyles.colors.white
     },
     preview: {
         flex: 1,
@@ -32,9 +32,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     head: {
-        width: Metrics.screenWidth,
-        height: 50,
-        padding: 16
+        position: 'absolute',
+        top: 30,
+        left: 10,
+        zIndex: 10
     }
 });
 

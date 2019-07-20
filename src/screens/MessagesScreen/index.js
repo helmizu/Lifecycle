@@ -18,7 +18,7 @@ export default class MessagesScreen extends Component {
             <View style={styles.container}>
                 <StatusList />
                 <Button
-                    icon="add-a-photo"
+                    icon="chat"
                     mode="contained"
                     onPress={() => this.props.navigation.navigate('ChatScreen')}
                 >

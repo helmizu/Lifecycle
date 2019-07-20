@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import AppStyles from '@config/styles';
 
 const styles = StyleSheet.create({
     avatar: {
@@ -18,6 +19,12 @@ const styles = StyleSheet.create({
     subtitleStyle: {
         fontWeight: '300',
         fontSize: 12
+    },
+    toolbar: {
+        backgroundColor: AppStyles.colors.white,
+        elevation: 4,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: AppStyles.colors.separator
     }
 });
 export default styles;

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import FeatureInDev from '@components/FeatureInDev'
 
 export default class PopularScreen extends Component {
     render() {
         return (
             <View>
-                <Text> PopularScreen </Text>
+                <FeatureInDev />
             </View>
         );
     }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, Platform, TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-paper';
+import { Appbar, Searchbar, Text } from 'react-native-paper';
 import FBStatusBar from '@components/FBStatusBar';
+import AppStyles from '@config/styles';
 import styles from './styles';
-
-import { Appbar, Searchbar } from 'react-native-paper';
 
 export default class SearchHeader extends Component {
     state = {
@@ -77,6 +76,7 @@ export default class SearchHeader extends Component {
                             onFocus={this.onFocus}
                             onBlur={this.onBlur}
                             value={this.state.searchQuery}
+                            iconColor={AppStyles.colors.lightGrey}
                         />
                     </Appbar.Header>
                 ) : (
@@ -88,7 +88,7 @@ export default class SearchHeader extends Component {
                         >
                             <Text style={styles.btnText}>Search</Text>
                         </TouchableOpacity>
-                        <Appbar.Action icon="face" onPress={this._onSearch} />
+                        <Appbar.Action icon="settings" onPress={this._onSearch} />
                     </Appbar.Header>
                 )}
             </View>

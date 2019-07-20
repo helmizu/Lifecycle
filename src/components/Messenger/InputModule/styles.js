@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import Metrics from '@config/metrics';
 import AppStyles from '@config/styles';
 import { isIphoneX } from '@lib/isIphoneX';
 
@@ -32,13 +31,24 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         overflow: 'hidden'
     },
+    btnSend: {
+        width: 32,
+        height: 32,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 16,
+        overflow: 'hidden',
+        backgroundColor: AppStyles.colors.accentColor
+    },
     input: {
-        width: Metrics.screenWidth / 2 - 16,
         height: 36,
         borderRadius: 24,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: AppStyles.colors.grey,
-        marginVertical: 8
+        marginVertical: 8,
+        paddingHorizontal: 15,
+        marginHorizontal: 10,
+        flex: 1
     }
 });
 export default styles;

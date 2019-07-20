@@ -1,6 +1,6 @@
 const AppStyles = {
     colors: {
-        accentColor: '#0084ff',
+        accentColor: '#51b9fb',
         inactiveGreyColor: '#626262',
         lightGreyCOlor: '#7f8c8d',
         separator: '#bdc3c7',

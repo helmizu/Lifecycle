@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import FeatureInDev from '@components/FeatureInDev'
 import styles from './styles';
 
 export default class PeopleScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text> PeopleScreen </Text>
+                <FeatureInDev />
             </View>
         );
     }

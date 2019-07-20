@@ -11,7 +11,7 @@ import TabIcon from '@components/TabIcon';
 import AppStyles from '@config/styles';
 
 const HomeTabIcon = ({ tintColor }) => (
-    <TabIcon name="home" tintColor={tintColor} />
+    <TabIcon name="chat" tintColor={tintColor} />
 );
 const PeopleTabIcon = ({ tintColor }) => (
     <TabIcon name="supervisor-account" tintColor={tintColor} />
@@ -71,7 +71,7 @@ export const BottomTabNavigation = createBottomTabNavigator(
     {
         tabBarOptions: {
             showLabel: false,
-            activeTintColor: '#0084ff',
+            activeTintColor: '#80b4fc',
             inactiveTintColor: AppStyles.colors.inactiveGreyColor,
             pressColor: '#7f8c8d'
         }

@@ -3,8 +3,8 @@ import { createMaterialTopTabNavigator } from 'react-navigation';
 
 import MessagesScreen from '@screens/MessagesScreen';
 import ActiveScreen from '@screens/ActiveScreen';
-import GroupsScreen from '@screens/GroupsScreen';
-import CallsScreen from '@screens/CallsScreen';
+// import GroupsScreen from '@screens/GroupsScreen';
+// import CallsScreen from '@screens/CallsScreen';
 
 import AppStyles from '@config/styles';
 
@@ -17,16 +17,16 @@ export const HomeTabNavigation = createMaterialTopTabNavigator(
 
         ActiveScreen: {
             screen: ActiveScreen,
-            navigationOptions: { header: null, title: 'Active' }
+            navigationOptions: { header: null, title: 'Peoples' }
         },
-        GroupsScreen: {
-            screen: GroupsScreen,
-            navigationOptions: { header: null, title: 'Groups' }
-        },
-        CallsScreen: {
-            screen: CallsScreen,
-            navigationOptions: { header: null, title: 'Calls' }
-        }
+        // GroupsScreen: {
+        //     screen: GroupsScreen,
+        //     navigationOptions: { header: null, title: 'Groups' }
+        // },
+        // CallsScreen: {
+        //     screen: CallsScreen,
+        //     navigationOptions: { header: null, title: 'Calls' }
+        // }
     },
     {
         tabBarPosition: 'top',

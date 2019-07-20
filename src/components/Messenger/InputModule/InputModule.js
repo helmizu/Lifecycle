@@ -46,6 +46,7 @@ export default class InputModule extends Component {
     };
 
     render() {
+        const { onPressAdd } = this.props;
         return (
             <View
                 style={
@@ -56,38 +57,14 @@ export default class InputModule extends Component {
             >
                 <TouchableRipple
                     borderless
-                    onPress={() => console.log('Pressed')}
+                    onPress={onPressAdd}
                     rippleColor="rgba(0, 0, 0, .32)"
                     style={styles.btn}
                 >
                     <Icon
-                        size={24}
+                        size={30}
                         color={AppStyles.colors.accentColor}
-                        name="add-circle"
-                    />
-                </TouchableRipple>
-                <TouchableRipple
-                    borderless
-                    onPress={() => console.log('Pressed')}
-                    rippleColor="rgba(0, 0, 0, .32)"
-                    style={styles.btn}
-                >
-                    <Icon
-                        size={24}
-                        color={AppStyles.colors.grey}
-                        name="camera-alt"
-                    />
-                </TouchableRipple>
-                <TouchableRipple
-                    borderless
-                    onPress={() => console.log('Pressed')}
-                    rippleColor="rgba(0, 0, 0, .32)"
-                    style={styles.btn}
-                >
-                    <Icon
-                        size={24}
-                        color={AppStyles.colors.grey}
-                        name="image"
+                        name="add"
                     />
                 </TouchableRipple>
                 <TouchableRipple
@@ -99,23 +76,24 @@ export default class InputModule extends Component {
                     <Icon size={24} color={AppStyles.colors.grey} name="mic" />
                 </TouchableRipple>
                 <TextInput
-                    label="Email"
+                    label="text"
                     value={this.state.text}
                     style={styles.input}
                     onChangeText={text => this.setState({ text })}
                     underlineColorAndroid="transparent"
                     multiline
+                    placeholder="Type a message"
                 />
                 <TouchableRipple
                     borderless
                     onPress={() => console.log('Pressed')}
                     rippleColor="rgba(0, 0, 0, .32)"
-                    style={styles.btn}
+                    style={styles.btnSend}
                 >
                     <Icon
-                        size={24}
-                        color={AppStyles.colors.accentColor}
-                        name="thumb-up"
+                        size={20}
+                        color={AppStyles.colors.white}
+                        name="send"
                     />
                 </TouchableRipple>
             </View>
