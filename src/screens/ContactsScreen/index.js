@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import ActiveList from '@components/ActiveList';
 import styles from './styles';
 
-export default class ActiveScreen extends Component {
+export default class ContactsScreen extends Component {
     render() {
         return (
             <View style={styles.container}>

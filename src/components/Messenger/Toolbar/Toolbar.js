@@ -4,6 +4,7 @@ import { Appbar, withTheme, Menu } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import AppStyles from '@config/styles';
 import metrics from '@config/metrics';
+import FeatureInDev from '../../FeatureInDev';
 import styles from './styles';
 
 const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 32 : StatusBar.currentHeight;
@@ -61,10 +62,9 @@ class Toolbar extends Component {
                         <Appbar.Action icon="more-vert" color={AppStyles.colors.lightGrey} onPress={this._openMenu} />
                     }
                     statusBarHeight={metrics.navBarHeight}
+                    style={{ maxWidth: '90%' }}
                 >
-                    <Menu.Item onPress={() => { }} title="Item 1" />
-                    <Menu.Item onPress={() => { }} title="Item 2" />
-                    <Menu.Item onPress={() => { }} title="Item 3" />
+                    <FeatureInDev />
                 </Menu>
             </Appbar.Header>
         );
