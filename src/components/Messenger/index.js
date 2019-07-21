@@ -6,7 +6,8 @@ import {
     Keyboard,
     FlatList
 } from 'react-native';
-import { Modal, Card, Title, Paragraph, Button, Avatar, Text } from 'react-native-paper';
+import { Modal, Card } from 'react-native-paper';
+import PropTypes from 'prop-types';
 import Toolbar from './Toolbar';
 import BubbleChat from './BubbleChat';
 import InputModule from './InputModule';
@@ -65,7 +66,7 @@ export default class Messenger extends Component {
         this.props.onBackPress();
     };
 
-    dismissKeyboard = () => {
+    _dismissKeyboard = () => {
         Keyboard.dismiss();
     };
 
@@ -86,9 +87,10 @@ export default class Messenger extends Component {
 
     render() {
         const { visible } = this.state;
+        const { receiver } = this.props;
         return (
             <View style={{ flex: 1 }}>
-                <Toolbar onBackPress={this._onBackPress} />
+                <Toolbar profile={receiver} onBackPress={this._onBackPress} />
                 <TouchableWithoutFeedback onPress={this._dismissKeyboard}>
                     <FlatList
                         style={{ flex: 1, backgroundColor: "#fafbff" }}
@@ -99,14 +101,24 @@ export default class Messenger extends Component {
                         initialNumToRender={20}
                     />
                 </TouchableWithoutFeedback>
+                <InputModule onPressAdd={this._showModal} />
+                {Platform.OS === 'ios' && <KeyboardSpacer />}
                 <Modal visible={visible} onDismiss={this._hideModal}>
-                    <Card style={{ marginHorizontal: 15 }}>
+                    <Card style={{ marginHorizontal: 30 }}>
                         <FeatureInDev />
                     </Card>
                 </Modal>
-                <InputModule onPressAdd={this._showModal} />
-                {Platform.OS === 'ios' && <KeyboardSpacer />}
             </View>
         );
     }
 }
+
+Messenger.propTypes = {
+    onBackPress: PropTypes.func,
+    receiver: PropTypes.object,
+};
+
+Messenger.defaultProps = {
+    onBackPress: () => { },
+    receiver: {},
+};

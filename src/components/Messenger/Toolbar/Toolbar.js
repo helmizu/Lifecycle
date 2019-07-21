@@ -25,22 +25,22 @@ class Toolbar extends Component {
     _openMenu = () => this.setState({ visible: true });
 
     _closeMenu = () => this.setState({ visible: false });
-    render() {
-        const { onBackPress, theme } = this.props;
-        const { fonts } = theme;
 
+    render() {
+        const { onBackPress, theme, profile } = this.props;
+        const { fonts } = theme;
+        const { name: { first = 'john', last = 'doe' } = {}, picture: { thumbnail = 'https://randomuser.me/api/portraits/med/men/21.jpg' } = {} } = profile;
+        const fullName = first[0].toUpperCase() + first.slice(1) +
+            ' ' + last[0].toUpperCase() + last.slice(1)
         return (
             <Appbar.Header style={styles.toolbar} statusBarHeight={STATUS_BAR_HEIGHT}>
                 <Appbar.BackAction color={AppStyles.colors.lightGrey} onPress={onBackPress} />
                 <Image
-                    source={{
-                        uri:
-                            'https://randomuser.me/api/portraits/med/men/21.jpg'
-                    }}
+                    source={{ uri: thumbnail }}
                     style={styles.avatar}
                 />
                 <Appbar.Content
-                    title="Denny"
+                    title={fullName}
                     titleStyle={[
                         styles.titleStyle,
                         {
@@ -73,7 +73,14 @@ class Toolbar extends Component {
 
 Toolbar.propTypes = {
     onBackPress: PropTypes.func,
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    profile: PropTypes.object
+};
+
+Toolbar.defaultProps = {
+    onBackPress: () => { },
+    theme: {},
+    profile: {}
 };
 
 export default withTheme(Toolbar);
