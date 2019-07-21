@@ -14,11 +14,12 @@ const theme = {
   }
 };
 
+const prefix = 'lifecycle://';
 
 const App = () => {
   return (
     <PaperProvider theme={theme}>
-      <NavigationStack />
+      <NavigationStack uriPrefix={prefix} />
     </PaperProvider>
   );
 }

@@ -60,6 +60,7 @@ const MessengerApp = createStackNavigator({
     },
     ChatScreen: {
         screen: ChatScreen,
+        path: 'chat/:channel',
         navigationOptions: { gesturesEnabled: false, header: null }
     }
 });

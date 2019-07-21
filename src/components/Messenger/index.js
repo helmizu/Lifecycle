@@ -10,6 +10,7 @@ import { Modal, Card, Title, Paragraph, Button, Avatar, Text } from 'react-nativ
 import Toolbar from './Toolbar';
 import BubbleChat from './BubbleChat';
 import InputModule from './InputModule';
+import FeatureInDev from '../FeatureInDev';
 import KeyboardSpacer from '../KeyboardSpacer';
 
 const message = [
@@ -48,7 +49,7 @@ const message = [
         date: new Date(),
         isRead: true
     }
-]
+].reverse()
 const user = 'me';
 
 export default class Messenger extends Component {
@@ -57,9 +58,10 @@ export default class Messenger extends Component {
     }
 
     _showModal = () => this.setState({ visible: true });
+
     _hideModal = () => this.setState({ visible: false });
 
-    onBackPress = () => {
+    _onBackPress = () => {
         this.props.onBackPress();
     };
 
@@ -67,7 +69,7 @@ export default class Messenger extends Component {
         Keyboard.dismiss();
     };
 
-    renderItem = ({ item, index }) => {
+    _renderItem = ({ item, index }) => {
         const { date = '', sender = '', text = '', type = '' } = item;
         return (
             <View style={{ marginHorizontal: 5 }}>
@@ -86,29 +88,20 @@ export default class Messenger extends Component {
         const { visible } = this.state;
         return (
             <View style={{ flex: 1 }}>
-                <Toolbar onBackPress={this.onBackPress} />
-                <TouchableWithoutFeedback onPress={this.dismissKeyboard}>
+                <Toolbar onBackPress={this._onBackPress} />
+                <TouchableWithoutFeedback onPress={this._dismissKeyboard}>
                     <FlatList
                         style={{ flex: 1, backgroundColor: "#fafbff" }}
-                        data={message.reverse()}
-                        renderItem={this.renderItem}
+                        data={message}
+                        renderItem={this._renderItem}
                         inverted
                         keyExtractor={(_item, index) => index.toString()}
                         initialNumToRender={20}
                     />
                 </TouchableWithoutFeedback>
                 <Modal visible={visible} onDismiss={this._hideModal}>
-                    <Card style={{ margin: 10 }}>
-                        <Card.Title title="Card Title" subtitle="Card Subtitle" left={(props) => <Avatar.Icon {...props} icon="folder" />} />
-                        <Card.Content>
-                            <Text>Card title</Text>
-                            <Text>Card content</Text>
-                        </Card.Content>
-                        <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                        <Card.Actions>
-                            <Button onPress={this._hideModal}>Cancel</Button>
-                            <Button onPress={this._hideModal}>Ok</Button>
-                        </Card.Actions>
+                    <Card style={{ marginHorizontal: 15 }}>
+                        <FeatureInDev />
                     </Card>
                 </Modal>
                 <InputModule onPressAdd={this._showModal} />

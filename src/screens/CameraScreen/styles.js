@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: AppStyles.colors.white
+        backgroundColor: AppStyles.colors.white,
+        justifyContent: 'center'
     },
     preview: {
         flex: 1,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     },
     head: {
         position: 'absolute',
-        top: 30,
+        top: Metrics.screenHeight / 100 * 7,
         left: 10,
         zIndex: 10
     }

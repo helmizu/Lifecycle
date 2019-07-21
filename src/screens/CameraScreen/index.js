@@ -63,9 +63,7 @@ export default class CameraScreen extends Component {
                         name="close"
                     />
                 </TouchableRipple>
-                <View style={{ alignSelf: 'center', paddingVertical: 50 }}>
-                    <FeatureInDev />
-                </View>
+                <FeatureInDev />
             </SafeAreaView>
         );
     }
